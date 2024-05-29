@@ -164,9 +164,9 @@ class KeyboardAutomationApp:
             s = int(self.s_entry.get())
 
             if now >= self.end:
-                self.press_keys_f(2 * n, "H", "Q")
+                self.press_keys_f(2 * n, "h", "q")
             else:
-                self.press_keys_f(n, "H", "Q")
+                self.press_keys_f(n, "h", "q")
 
             time.sleep(s)
 
@@ -195,17 +195,17 @@ class KeyboardAutomationApp:
         print("Keyboard listener started.")
         self.queue.put("===Keyboard listener started===\n")
         num = 20
-        keyboard.add_hotkey("f1+Q", lambda: self.press_keys_f(num, "f1", "Q"))
-        keyboard.add_hotkey("f1+W", lambda: self.press_keys_f(num, "f1", "W"))
-        keyboard.add_hotkey("f1+E", lambda: self.press_keys_f(num, "f1", "E"))
+        keyboard.add_hotkey("f1+q", lambda: self.press_keys_f(num, "f1", "q"))
+        keyboard.add_hotkey("f1+w", lambda: self.press_keys_f(num, "f1", "w"))
+        keyboard.add_hotkey("f1+e", lambda: self.press_keys_f(num, "f1", "e"))
 
-        keyboard.add_hotkey("f2+Q", lambda: self.press_keys_f(num, "f2", "Q"))
-        keyboard.add_hotkey("f2+W", lambda: self.press_keys_f(num, "f2", "W"))
-        keyboard.add_hotkey("f2+E", lambda: self.press_keys_f(num, "f2", "E"))
+        keyboard.add_hotkey("f2+q", lambda: self.press_keys_f(num, "f2", "q"))
+        keyboard.add_hotkey("f2+w", lambda: self.press_keys_f(num, "f2", "w"))
+        keyboard.add_hotkey("f2+e", lambda: self.press_keys_f(num, "f2", "e"))
 
-        keyboard.add_hotkey("f3+Q", lambda: self.press_keys_f(num, "f3", "Q"))
-        keyboard.add_hotkey("f3+W", lambda: self.press_keys_f(num, "f3", "W"))
-        keyboard.add_hotkey("f3+E", lambda: self.press_keys_f(num, "f3", "E"))
+        keyboard.add_hotkey("f3+q", lambda: self.press_keys_f(num, "f3", "q"))
+        keyboard.add_hotkey("f3+w", lambda: self.press_keys_f(num, "f3", "w"))
+        keyboard.add_hotkey("f3+e", lambda: self.press_keys_f(num, "f3", "e"))
 
         while self.listener_active:
             time.sleep(0.1)
