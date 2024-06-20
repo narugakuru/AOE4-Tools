@@ -52,7 +52,7 @@ class KeyboardAutomationApp:
         n_label.grid(row=0, column=0, padx=5)
         self.n_entry = tk.Entry(entry_frame, bd=0)
         self.n_entry.grid(row=0, column=1, padx=5)
-        self.n_entry.insert(tk.END, "3")
+        self.n_entry.insert(tk.END, "1")
 
         s_label = tk.Label(entry_frame, text="操作间隔 (s):", bg=bg_color)
         s_label.grid(row=1, column=0, padx=5)
@@ -97,6 +97,15 @@ class KeyboardAutomationApp:
             bg=bg_color,
         )
         self.listener_button.grid(row=0, column=1, padx=5)
+
+        button = tk.Button(
+            keyboard_button_frame,
+            text=f"进阶1m1q",
+            width=12,
+            command=lambda x=1: self.set_preset_1m1q(x),
+            bg=bg_color,
+        )
+        button.grid(row=0, column=4, padx=5, pady=5)
 
         # 3TC
         preset_button_frame = tk.Frame(self.root, bg="lightgrey", bd=0)
@@ -171,7 +180,7 @@ class KeyboardAutomationApp:
             time.sleep(s)
 
     def start_program(self):
-        print("===循环开始===")
+        print("===新循环开始===")
         self.start = datetime.now()
         self.end = self.start + timedelta(minutes=10)
         self.is_paused = False
@@ -189,7 +198,7 @@ class KeyboardAutomationApp:
             self.stop_program_thread()
         self.program_thread = Thread(target=self.start_program)
         self.program_thread.start()
-        self.timer = Timer(20 * 60, self.stop_program_thread)
+        self.timer = Timer(25 * 60, self.stop_program_thread)
         self.timer.start()
 
     def stop_program_thread(self):
@@ -203,6 +212,12 @@ class KeyboardAutomationApp:
     def set_preset(self, tc):
         self.n_entry.delete(0, tk.END)
         self.n_entry.insert(tk.END, str(tc * 3))
+        self.s_entry.delete(0, tk.END)
+        self.s_entry.insert(tk.END, "59")
+
+    def set_preset_1m1q(self, n):
+        self.n_entry.delete(0, tk.END)
+        self.n_entry.insert(tk.END, str(n))
         self.s_entry.delete(0, tk.END)
         self.s_entry.insert(tk.END, "59")
 
@@ -249,4 +264,4 @@ if __name__ == "__main__":
     app = KeyboardAutomationApp(root)
     root.mainloop()
 
-# pyinstaller --onefile --windowed AOE4v3.py
+# pyinstaller --onefile --windowed AOE4v6.py

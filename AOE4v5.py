@@ -171,7 +171,7 @@ class KeyboardAutomationApp:
             time.sleep(s)
 
     def start_program(self):
-        print("===循环开始===")
+        print("===新循环开始===")
         self.start = datetime.now()
         self.end = self.start + timedelta(minutes=10)
         self.is_paused = False
@@ -189,7 +189,7 @@ class KeyboardAutomationApp:
             self.stop_program_thread()
         self.program_thread = Thread(target=self.start_program)
         self.program_thread.start()
-        self.timer = Timer(20 * 60, self.stop_program_thread)
+        self.timer = Timer(25 * 60, self.stop_program_thread)
         self.timer.start()
 
     def stop_program_thread(self):
